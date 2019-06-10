@@ -1,0 +1,31 @@
+create database estoque;
+
+use estoque;
+
+create table produto(
+	idProduto integer primary key auto_increment,
+	descricao varchar(100),
+	quantidade int
+);
+
+CREATE TABLE equipe(
+    idEquipe integer PRIMARY KEY AUTO_INCREMENT,
+    descricao varchar(20),
+    colaborador1 integer,
+    colaborador2 integer,
+    colaboradorResponsavel integer,
+    veiculo integer
+    );
+    
+CREATE TABLE colaborador (
+    idColaborador integer PRIMARY KEY AUTO_INCREMENT,
+    nome varchar (50)
+    );
+    
+CREATE TABLE veiculo(
+	idVeiculo integer PRIMARY KEY AUTO_INCREMENT,
+    marca integer,
+    modelo varchar(100),
+    ano varchar (4),
+    placa varchar(7)
+	);
