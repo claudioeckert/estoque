@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SisCoEst - Login</title>
+  <title>SisCoEst - Cadastro</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 <body class="bg-gradient-primary">
 
   <div class="container">
-
+      
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
@@ -33,37 +33,42 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              
+       
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="sidebar-brand-text mx-3">SisCoEst</h1>
-                    <h1 class="h4 text-gray-900 mb-4">Seja bem vindo!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Faça seu cadastro!</h1>
                   </div>
                   <form class="user">
-                    <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
-                    </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Lembrar-me</label>
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Sobrenome">
                       </div>
                     </div>
-                    <a href="index.php" class="btn btn-primary btn-user btn-block">
-                      Entrar
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail">
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repetir senha">
+                      </div>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-user btn-block">
+                      Registrar Cadastro
                     </a>
-                    <hr>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="esqueceu_a_senha.php">Esqueceu a senha?</a>
+                    <a class="small" href="esqueceu_a_senha.php">Esqueceu a Senha?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="registro.php">Crie sua conta!</a>
+                    <a class="small" href="login.php">Já tem cadastro? Entrar!</a>
                   </div>
                 </div>
               </div>
@@ -73,6 +78,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
