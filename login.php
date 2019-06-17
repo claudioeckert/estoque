@@ -1,3 +1,47 @@
+<?php
+  include_once "manipulacaoBanco.php";
+  
+	if(isset($_COOKIE['cookieSiscoest'])){
+		session_start();
+    $_SESSION['variavelSessaoEmail'] = $_COOKIE['cookieSiscoest'];
+    $_SESSION['logado'] = 'logado';
+    $sql = "select * from  usuario where email = '".$_SESSION['variavelSessaoEmail']."'";
+    $resultado = consulta($sql);
+    $linha_dados = $resultado->fetch_array();
+    $_SESSION['variavelSessaoNome'] = $linha_dados['nome'];
+    $_SESSION['variavelSessaoSobrenome'] = $linha_dados['sobrenome'];
+    $_SESSION['variavelSessaoId'] = $linha_dados['idUsuario'];
+
+		header('Location: index.php');
+	}else{	
+		if(isset($_POST['email']) && isset($_POST['senha'])){
+			$email = $_POST['email'];
+      $senha = $_POST['senha'];
+      $sql = "select * from  usuario where email = '$email' and senha = '$senha'";
+      $resultado = consulta($sql);
+
+			if($resultado->num_rows > 0){
+        $linha_dados = $resultado->fetch_array();
+        
+        session_start();
+        $_SESSION['variavelSessaoNome'] = $linha_dados['nome'];
+        $_SESSION['variavelSessaoSobrenome'] = $linha_dados['sobrenome'];
+        $_SESSION['variavelSessaoId'] = $linha_dados['idUsuario'];				
+        $_SESSION['variavelSessaoEmail'] = $email;
+        $_SESSION['logado'] = 'logado';      
+
+				setcookie('cookieSiscoest', $email, time() + (24*3600));
+        
+				header('Location: index.php');
+			} 
+			else{			
+				echo "<script> alert('Email ou senha incorretos!'); </script>";
+				//echo "<script> location.href='login.php'; </script>";			
+			}
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,12 +84,12 @@
                     <h1 class="sidebar-brand-text mx-3">SisCoEst</h1>
                     <h1 class="h4 text-gray-900 mb-4">Seja bem vindo!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="POST" action="login.php">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
+                      <input type="password" name="senha" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -53,10 +97,8 @@
                         <label class="custom-control-label" for="customCheck">Lembrar-me</label>
                       </div>
                     </div>
-                    <a href="index.php" class="btn btn-primary btn-user btn-block">
-                      Entrar
-                    </a>
-                    <hr>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Entrar">
+                   
                   </form>
                   <hr>
                   <div class="text-center">

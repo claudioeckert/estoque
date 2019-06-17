@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if( isset($_SESSION['logado']) &&  $_SESSION['logado']=='logado'){    
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -29,3 +34,4 @@
 </body>
 
 </html>
+  <?php }  ?>

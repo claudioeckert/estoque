@@ -29,3 +29,11 @@ CREATE TABLE veiculo(
     ano varchar (4),
     placa varchar(7)
 	);
+
+CREATE TABLE usuario(
+	idUsuario integer PRIMARY KEY AUTO_INCREMENT,
+    nome varchar (15),
+    sobrenome varchar(35),
+    email varchar (50),
+    senha varchar(30)
+	);
