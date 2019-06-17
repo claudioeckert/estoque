@@ -29,8 +29,12 @@
         $_SESSION['variavelSessaoId'] = $linha_dados['idUsuario'];				
         $_SESSION['variavelSessaoEmail'] = $email;
         $_SESSION['logado'] = 'logado';      
+        
 
-				setcookie('cookieSiscoest', $email, time() + (24*3600));
+        //Cria o cookie somente se a caixa Lembrar-me estiver marcada
+        if (isset($_POST['checkboxLembrar'])){
+          setcookie('cookieSiscoest', $email, time() + (24*3600));
+        }
         
 				header('Location: index.php');
 			} 
@@ -93,7 +97,7 @@
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name='checkboxLembrar'>
                         <label class="custom-control-label" for="customCheck">Lembrar-me</label>
                       </div>
                     </div>
