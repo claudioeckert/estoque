@@ -1,20 +1,28 @@
 <?php
   include_once "manipulacaoBanco.php";
+  include_once "enviarEmail.php";
   
-  if(isset($_POST['email'])){
+  if(isset($_POST['email']) && !empty($_POST['email'])){
     $email = $_POST['email'];
     $sql = "select * from  usuario where email = '$email'";
     $resultado = consulta($sql);
 
     if($resultado->num_rows > 0){
-      echo "<script> alert('A senha foi encaminhada para o e-mail '". $email. "' !'); </script>";
-      //$linha_dados = $resultado->fetch_array();
-  
-      
-      //header('Location: index.php');
-    } 
-    else{			
+      $linha_dados = $resultado->fetch_array();
+      $emailBuscado = $linha_dados['email'];
+      $senhaBuscada = $linha_dados['senha'];
 
+      $res = email($emailBuscado, $senhaBuscada);//chama a classe email
+      
+      if($res == "ok"){
+        echo "<script> alert('Senha encaminhada para o e-mail informado!'); </script>";
+        //header('Location: login.php');
+      }
+      if($res == "erro"){
+        echo "<script> alert('Erro!'); </script>"; 
+      }
+    }else{
+       echo "<script> alert('Não foi localizado o e-mail informado!'); </script>"; 
     }
   }
 

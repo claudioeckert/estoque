@@ -1,5 +1,5 @@
 <?php
-function email(){
+function email($email, $senha){
 
     require_once('phpmailer.php'); //chama a classe de onde você a colocou.
     require_once('smtp.php'); //chama a classe de onde você a colocou.
@@ -25,22 +25,22 @@ function email(){
     $mail->SingleTo = true; 
 
     // configuração do email a ver enviado.
-    // Primeiro buscar os dados no banco comparando o e-mail informado com os cadastrados no banco
-
-
-    $mail->From = "claudio.j.mano@bol.com.br"; 
+    $mail->From = "$email"; 
     $mail->FromName = "SisCoEst -- Senha --"; 
 
-    $mail->addAddress("claudio.j.mano@bol.com.br"); // email do destinatario.
+    $mail->addAddress("$email");//Email para encaminhar a senha cadastrada no banco
 
-    $mail->Subject = "Aqui vai o assunto do email, pode vim atraves de variavel."; 
-    $mail->Body = "Aqui vai a mensagem, que tambem pode vim por variavel.";
+    $mail->Subject = "Relembrando senha."; //Aqui vai o assunto do email, pode vim atraves de variavel.
+    $comentario = "Sabemos que imprevistos acontecem, conforme solicitado seguem os dados para logar no sistema.\n E-mail: $email\nSenha: $senha";//Aqui vai a mensagem, que tambem pode vim por variavel.;
+    $mail->Body = nl2br($comentario);
 
 
     if(!$mail->Send()){
-        echo "Erro ao enviar Email:" . $mail->ErrorInfo;
+        return "erro";
+        //echo "Erro ao enviar Email, informe o administrador!:\n" . $mail->ErrorInfo;
     }else{
-        echo "<script>alert('Email enviado com Sucesso!);</script>";
+        return "ok";
+        //echo "<script>alert('Email enviado com Sucesso!);</script>";
     }
 
 }
