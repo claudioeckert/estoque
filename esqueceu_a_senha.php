@@ -1,3 +1,27 @@
+<?php
+  include_once "manipulacaoBanco.php";
+  
+  if(isset($_POST['email'])){
+    $email = $_POST['email'];
+    $sql = "select * from  usuario where email = '$email'";
+    $resultado = consulta($sql);
+
+    if($resultado->num_rows > 0){
+      echo "<script> alert('A senha foi encaminhada para o e-mail '". $email. "' !'); </script>";
+      //$linha_dados = $resultado->fetch_array();
+  
+      
+      //header('Location: index.php');
+    } 
+    else{			
+
+    }
+  }
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,13 +64,11 @@
                     <h1 class="h4 text-gray-900 mb-2">Esqueceu a Senha?</h1>
                     <p class="mb-4">Esqueceu sua senha? Nós entendemos, coisas acontecem. Basta digitar seu e-mail abaixo e nós lhe enviaremos a senha!</p>
                   </div>
-                  <form class="user">
+                  <form method="POST" action="esqueceu_a_senha.php" class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite o e-mail cadastrado...">
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite o e-mail cadastrado..." autofocus>
                     </div>
-                    <a href="login.html" class="btn btn-primary btn-user btn-block">
-                      Encaminhar senha!
-                    </a>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Encaminhar Senha!">
                   </form>
                   <hr>
                   <div class="text-center">
