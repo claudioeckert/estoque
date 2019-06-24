@@ -1,5 +1,4 @@
 <?php
-  //session_name();
   session_start();
   if(isset($_SESSION['logado']) &&  $_SESSION['logado']=='logado'){    
 ?>
@@ -29,7 +28,7 @@
       <body id="page-top">
       <?php
           include ("menu.php");
-          //require ("menu.php");
+          
         ?>
 
       </body>

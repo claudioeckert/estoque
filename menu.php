@@ -1,6 +1,19 @@
 <?php
-  //session_start(); Deixar comentado, pois gera erro devido a iniciar a sessão dentro do index e dentro do menu
-  if( isset($_SESSION['logado']) &&  $_SESSION['logado']=='logado'){    
+  //session_start(); //Deixar comentado, pois gera erro devido a iniciar a sessão dentro do index e dentro do menu
+  if(isset($_SESSION['logado']) &&  $_SESSION['logado']=='logado'){
+    $nome = $_SESSION['variavelSessaoNome'];
+    $sobrenome = $_SESSION['variavelSessaoSobrenome'];
+    //$imagem = $_SESSION['variavelSessaoImagem'];
+    //echo "$nome";
+
+    if(empty($_SESSION['variavelSessaoImagem'])){//carrega foto se variavel de sessão estiver vazia
+      $imagem = "img/imgInterrogacao.jpg";
+      echo "teste";
+    }else{
+      $imagem = $_SESSION['variavelSessaoImagem'];
+      echo "teste2";
+    }
+
     ?>
 
     <!DOCTYPE html>
@@ -310,8 +323,10 @@
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Chamar usuario logado</span>
-                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "$nome ". " $sobrenome" ?></span>
+                    <?php
+                        echo "<img class='img-profile rounded-circle' src='$imagem'>";
+                    ?>
                   </a>
                   <!-- Dropdown - User Information -->
                   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

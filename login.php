@@ -11,6 +11,7 @@
     $_SESSION['variavelSessaoNome'] = $linha_dados['nome'];
     $_SESSION['variavelSessaoSobrenome'] = $linha_dados['sobrenome'];
     $_SESSION['variavelSessaoId'] = $linha_dados['idUsuario'];
+    $_SESSION['variavelSessaoImagem'] = $linha_dados['imagem'];
 
 		header('Location: index.php');
 	}else{	
@@ -28,7 +29,8 @@
         $_SESSION['variavelSessaoSobrenome'] = $linha_dados['sobrenome'];
         $_SESSION['variavelSessaoId'] = $linha_dados['idUsuario'];				
         $_SESSION['variavelSessaoEmail'] = $email;
-        $_SESSION['logado'] = 'logado';      
+        $_SESSION['logado'] = 'logado';
+        $_SESSION['variavelSessaoImagem'] = $linha_dados['imagem'];      
         
 
         //Cria o cookie somente se a caixa Lembrar-me estiver marcada

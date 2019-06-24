@@ -35,8 +35,9 @@ CREATE TABLE usuario(
     nome varchar (15) NOT null,
     sobrenome varchar(35) NOT null,
     email varchar (50) UNIQUE not null,
-    senha varchar(30) not null
+    senha varchar(30) not null,
+    imagem varchar(100)
 	);
 
-INSERT INTO usuario (nome, sobrenome, email, senha) VALUES ('Roger', 'Lavarda', 'rogerlavarda@gmail.com', '123');
+INSERT INTO usuario (nome, sobrenome, email, senha, imagem) VALUES ('Roger', 'Lavarda', 'rogerlavarda@gmail.com', '123','img/teste.jpg');
 INSERT INTO usuario (nome, sobrenome, email, senha) VALUES ('Claudio', 'Eckert', 'claudioeckert@gmail.com', '123');
