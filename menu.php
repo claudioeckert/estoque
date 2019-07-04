@@ -7,11 +7,13 @@
     //echo "$nome";
 
     if(empty($_SESSION['variavelSessaoImagem'])){//carrega foto se variavel de sessão estiver vazia
-      $imagem = "img/imgInterrogacao.jpg";
-      echo "teste";
+      $imagem = "img/user.png";
+      //echo "______________teste_1_____________";
+      //echo $_SESSION['variavelSessaoImagem'];
     }else{
       $imagem = $_SESSION['variavelSessaoImagem'];
-      echo "teste2";
+      //echo "_____________teste2_______________";
+      //echo $_SESSION['variavelSessaoImagem'];
     }
 
     ?>
@@ -81,8 +83,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Cadastro geral:</h6>
-                <a class="collapse-item" href="buttons.html">Produtos</a>
-                <a class="collapse-item" href="">Colaboradores</a>
+                <a class="collapse-item" href="index.php?pagina=registro.php">Produtos</a>
+                <a class="collapse-item" href="index.php?pagina=esqueceu_a_senha.php">Colaboradores</a>
                 <a class="collapse-item" href="">Equipes</a>
                 <a class="collapse-item" href="">Veículos</a>
               </div>
@@ -325,12 +327,13 @@
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "$nome ". " $sobrenome" ?></span>
                     <?php
-                        echo "<img class='img-profile rounded-circle' src='$imagem'>";
+                        echo "<img class='img-profile rounded-circle' src='$imagem'>";                        
                     ?>
                   </a>
                   <!-- Dropdown - User Information -->
                   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="perfil.php">
+                    <!--<a class="dropdown-item" href="perfil.php">-->
+                    <a class="dropdown-item" href="index.php?pagina=perfil.php">
                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Perfil
                     </a>
@@ -354,7 +357,16 @@
 
             </nav>
             <!-- End of Topbar -->
+            
+            <div>
+            <?php
+            if(isset($_GET['pagina'])){
+              $link = $_GET['pagina'];
+             include($link);
+            }
+            ?>
 
+            </div>
             <footer class="sticky-footer bg-white">
             <div class="container my-auto">
               <div class="copyright text-center my-auto">
